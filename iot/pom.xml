@@ -6,6 +6,7 @@
 
     <groupId>ru.kmvinvest</groupId>
     <artifactId>iot</artifactId>
+    <packaging>pom</packaging>
     <version>1.0</version>
 
     <parent>
