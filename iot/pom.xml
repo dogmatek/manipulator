@@ -6,8 +6,14 @@
 
     <groupId>ru.kmvinvest</groupId>
     <artifactId>iot</artifactId>
-    <packaging>pom</packaging>
     <version>1.0</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <start-class>ru.kmvinvest.AppIot</start-class>
+    </properties>
+
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -86,7 +92,5 @@
         </plugins>
     </build>
 
-    <properties>
-        <start-class>ru.kmvinvest.Application</start-class>
-    </properties>
+
 </project>
