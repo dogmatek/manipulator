@@ -1,6 +1,5 @@
 package ru.kmvinvest.controllers;
 
-import com.pi4j.io.i2c.I2CFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

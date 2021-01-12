@@ -34,8 +34,9 @@ public class ManipulatorService {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (I2CFactory.UnsupportedBusNumberException e) {
-
+            System.out.println("Ошибка запуска PCA9685GpioProvider");
             e.printStackTrace();
+
         }
         System.out.println("Запуск StartPCA9685GpioProvider завершился");
     }
@@ -137,9 +138,17 @@ public class ManipulatorService {
                 gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_02, "Серво 02"),
                 gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_03, "Серво 03"),
                 gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_04, "Серво 04"),
-                gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_05, "Серво 05")
-
-        };
+                gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_05, "Серво 05"),
+                gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_06, "not used"),
+                gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_07, "not used"),
+                gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_08, "not used"),
+                gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_09, "not used"),
+                gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_10, "not used"),
+                gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_11, "not used"),
+                gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_12, "not used"),
+                gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_13, "not used"),
+                gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_14, "not used"),
+                gpio.provisionPwmOutputPin(gpioProvider, PCA9685Pin.PWM_15, "not used")};
     }
 
 
@@ -156,6 +165,9 @@ public class ManipulatorService {
         I2CBus bus = I2CFactory.getInstance(I2CBus.BUS_0); // Определяем интерфейс I2C - 0
         // Передаем адрес драйвера сервоприводом PCA9685 PWM
         PCA9685GpioProvider provider = new PCA9685GpioProvider(bus, 0x40, FREQUENCY, FREQUENCY_CORRECTION_fACTOR);
+        GpioPinPwmOutput[] myOutputs;
+        myOutputs = provisionPwmOutputs(provider);
+        // Reset outputs
         provider.reset();
         return provider;
     }
